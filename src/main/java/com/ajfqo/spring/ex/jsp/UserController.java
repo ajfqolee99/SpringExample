@@ -2,11 +2,13 @@ package com.ajfqo.spring.ex.jsp;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.ajfqo.spring.ex.jsp.domain.User;
 import com.ajfqo.spring.ex.jsp.service.UserService;
 
 @Controller
@@ -36,8 +38,20 @@ public class UserController {
 	@GetMapping("/input")
 	public String inputUser() {
 		//return "/WEB-INF/jsp/jsp/user-input.jsp";	application.properties에 공통되는 경로를 지정해주었기 때문에 공통부분 제외하고 경로작성
-		return "/jsp/user-input";
+		return "jsp/user-input";
 		
+	}
+	
+	@GetMapping("/info")
+	public String userInfo(Model model) {
+		// 가장 최근에 추가된 사용자 정보
+		User user = userService.getLastUser();
+		
+		// Model
+		model.addAttribute("result", user);
+		model.addAttribute("title", "사용자 정보");
+		
+		return "jsp/userInfo";
 	}
 	
 }
