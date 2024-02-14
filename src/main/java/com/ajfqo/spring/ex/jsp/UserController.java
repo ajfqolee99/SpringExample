@@ -21,14 +21,22 @@ public class UserController {
 	// 이름, 생년월일, 이메일을 전달받고, 저장하는 페이지
 //	@RequestMapping("/jsp/user/create", method=RequestMethod.GET)
 	@GetMapping("/create")
-	@ResponseBody
+//	@ResponseBody
 	public String createUser(
 			@RequestParam("name") String name
 			,@RequestParam("birthday") String birthday
-			,@RequestParam("email") String email) 
+			,@RequestParam("email") String email
+			,Model model) 
 	{
-		int count = userService.addUser(name, birthday, email);
-		return "입력성공 : " + count;
+//		int count = userService.addUser(name, birthday, email);
+		User user = new User();
+		user.setName(name);
+		user.setYyyymmdd(birthday);
+		user.setEmail(email);
+		
+		int count = userService.addUserByObject(user);
+		model.addAttribute("result", user);
+		return "jsp/userInfo";
 	}
 	
 	// jsp 경로를 return
