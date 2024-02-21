@@ -1,5 +1,7 @@
 package com.ajfqo.spring.ex.jsp.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +27,11 @@ public class UserService {
 	// 가장 최근에 등록된 사용자 정보 얻기
 	public User getLastUser() {
 		User user = userRepository.selectLastUser();
+		return user;
+	}
+	
+	public List<User>  getUserList() {
+		List<User> user = userRepository.selectUserList();
 		return user;
 	}
 	

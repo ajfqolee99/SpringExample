@@ -61,6 +61,23 @@
 		LIMIT
 			1
 	</select>
+	
+	<select id="selectUserList"
+	resultType="com.ajfqo.spring.ex.jsp.domain.User">
+		
+		SELECT 
+			 `id`
+			,`name`	
+			,`yyyymmdd`
+			,`email`
+			,`info`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`new_user`
+		ORDER BY 
+			`id` DESC
+	</select>
 
 
 </mapper>
