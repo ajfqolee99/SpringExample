@@ -24,7 +24,7 @@
 			<tr>
 				<td>${user.name }</td>
 				<td>${user.email }</td>
-				<td>${user.introduce }</td>
+				<td>${user.info }</td>
 			</tr>
 			</c:forEach>
 		</tbody>

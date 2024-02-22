@@ -78,6 +78,15 @@
 		ORDER BY 
 			`id` DESC
 	</select>
+	
+	<select id="selectCountEmail" parameterType="string" resultType="int">
+		SELECT 
+			 COUNT(*)
+		FROM
+			`new_user`
+		WHERE
+			`email` = #{email}
+	</select>
 
 
 </mapper>

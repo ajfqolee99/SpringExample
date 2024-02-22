@@ -22,4 +22,6 @@ public interface UserRepository {
 	
 	public List<User> selectUserList();
 	
+	public int selectCountEmail(@Param("email")String email);
+	
 }
